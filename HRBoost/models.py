@@ -34,16 +34,16 @@ class UserInfo(models.Model):
     )
     birth_date = models.DateField()
     image = models.TextField(default="user.jpg", blank=True)
-    address = models.TextField()
-    phone_num = models.CharField(max_length=14)
-    gender = models.BooleanField()
-    social_status = models.CharField(max_length=60)
+    address = models.TextField(null=True, blank=True)
+    phone_num = models.CharField(max_length=14, null=True, blank=True)
+    gender = models.BooleanField(null=True, blank=True)
+    social_status = models.CharField(max_length=60, null=True, blank=True)
     job_title = models.CharField(max_length=100, null=True, blank=True)
     available_leave_days = models.IntegerField(default=15)
     evaluation = models.FloatField(null=True, blank=True)
 
     def __str__(self):
-        return self.user_id
+        return str(self.user_id)
 
 
 class UserVacation(models.Model):
@@ -58,7 +58,7 @@ class UserVacation(models.Model):
     vacation_type = models.CharField(max_length=40)
 
     def __str__(self):
-        pass
+        return self.vacation_type
 
 
 class Attendance(models.Model):
@@ -69,7 +69,7 @@ class Attendance(models.Model):
     check_out = models.DateTimeField()
 
     def __str__(self):
-        pass
+        return str(self.user_id)
 
 
 class Notification(models.Model):
@@ -82,15 +82,15 @@ class Notification(models.Model):
     opened = models.BooleanField(default=False)
 
     def __str__(self):
-        pass
+        return self.title
 
 
-class Role(models.Model):
+# class Role(models.Model):
 
-    role_name = models.CharField(max_length=15)
+#     role_name = models.CharField(max_length=15)
 
-    def __str__(self):
-        return self.role_name
+#     def __str__(self):
+#         return self.role_name
 
 
 class Permission(models.Model):
@@ -104,11 +104,13 @@ class Permission(models.Model):
 
 class RolePermission(models.Model):
 
-    role_id = models.ForeignKey(Role, on_delete=models.CASCADE, null=False, blank=False)
+    role_id = models.ForeignKey(
+        UserRole, on_delete=models.CASCADE, null=False, blank=False
+    )
     per_id = models.ForeignKey(
         Permission, on_delete=models.CASCADE, null=False, blank=False
     )
     has = models.BooleanField()
 
     def __str__(self):
-        return self.has
+        return str(self.per_id)
