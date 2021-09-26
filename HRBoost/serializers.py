@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import (
-    Role,
+    UserRole,
     Department,
     Permission,
     Notification,
@@ -19,7 +19,7 @@ class UserInfoSerializer(serializers.ModelSerializer):
 
 class UserVacationSerializer(serializers.ModelSerializer):
     class Meta:
-        model = UserInfo
+        model = UserVacation
         fields = "__all__"
 
 
@@ -27,3 +27,17 @@ class AttendanceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Attendance
         fields = "__all__"
+
+
+class PermissionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RolePermission
+        fields = ("id", "per_id")
+
+
+class Serializer(serializers.ModelSerializer):
+    roles = PermissionSerializer()
+
+    class Meta:
+        model = UserRole
+        fields = ("role_name", "per_id", "id")
