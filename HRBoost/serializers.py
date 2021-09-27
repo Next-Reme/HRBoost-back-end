@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from django.db import models
 from .models import (
     UserRole,
     Department,
@@ -9,6 +10,29 @@ from .models import (
     UserInfo,
     UserVacation,
 )
+
+
+class GetPermissions(models.Model):
+    id = models.IntegerField(primary_key=True)
+    role_id = models.IntegerField()
+    per_id = models.IntegerField()
+    role_per_id = models.IntegerField()
+    has = models.BooleanField()
+    field = models.CharField(max_length=40)
+    description = models.TextField()
+    role_name = models.CharField(max_length=15)
+
+
+# class RolePermissionSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = GetPermissions
+#         fields = "__all__"
+
+
+class RolePermissionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RolePermission
+        fields = "__all__"
 
 
 class UserInfoSerializer(serializers.ModelSerializer):
@@ -32,12 +56,21 @@ class AttendanceSerializer(serializers.ModelSerializer):
 class PermissionSerializer(serializers.ModelSerializer):
     class Meta:
         model = RolePermission
-        fields = ("id", "per_id")
+        fields = ("role_id", "per_id")
 
 
-class Serializer(serializers.ModelSerializer):
-    roles = PermissionSerializer()
+class UserRoleSerializer(serializers.ModelSerializer):
+    # roles = PermissionSerializer()
 
     class Meta:
         model = UserRole
-        fields = ("role_name", "per_id", "id")
+        fields = (
+            "role_name",
+            "id",
+        )
+
+
+class DepartmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Department
+        fields = "__all__"
