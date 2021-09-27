@@ -51,8 +51,8 @@ class UserVacation(models.Model):
         get_user_model(), on_delete=models.CASCADE, null=False, blank=False
     )
     applied_date = models.DateField()
-    start_date = models.DateField()
-    end_date = models.DateField()
+    start_date = models.DateTimeField()
+    end_date = models.DateTimeField()
     description = models.TextField()
     status = models.BooleanField(default=False)
     vacation_type = models.CharField(max_length=40)
