@@ -19,6 +19,7 @@ from .serializers import (
     UserRoleSerializer,
     GetPermissions,
     DepartmentSerializer,
+    UserInfoupdateSerializer,
 )
 
 # from .permissions import IsOwnerOrReadOnly
@@ -35,6 +36,11 @@ class UserInfoDetail(RetrieveUpdateDestroyAPIView):
     queryset = UserInfo.objects.all()
     serializer_class = UserInfoSerializer
     # permission_classes = (IsOwnerOrReadOnly,)
+
+
+class UserInfoUpdate(RetrieveUpdateDestroyAPIView):
+    queryset = UserInfo.objects.all()
+    serializer_class = UserInfoupdateSerializer
 
 
 class UserVacationList(ListCreateAPIView):

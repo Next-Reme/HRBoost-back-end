@@ -49,6 +49,12 @@ class UserInfoSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class UserInfoupdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserInfo
+        fields = "__all__"
+
+
 class UserVacationSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserVacation

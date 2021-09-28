@@ -8,10 +8,12 @@ from .views import (
     RolePermissionList,
     UserRoleper,
     UserVacationDetail,
+    UserInfoUpdate,
 )
 
 urlpatterns = [
     path("users/<int:pk>/", UserInfoDetail.as_view(), name="user_info_detail"),
+    path("usersupdate/<int:pk>/", UserInfoUpdate.as_view(), name="user_info_detail"),
     path("users/", UserInfoList.as_view(), name="user_info_list"),
     path("vacations/", UserVacationList.as_view(), name="user_vacation_list"),
     path(
@@ -21,7 +23,6 @@ urlpatterns = [
     path(
         "attendance/<int:user_id>/",
         AttendanceDetail.as_view(),
-        name="cookie_stand_detail",
     ),
     path(
         "rolepermission/<int:role_id>/",
