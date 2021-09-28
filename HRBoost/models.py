@@ -41,6 +41,7 @@ class UserInfo(models.Model):
     job_title = models.CharField(max_length=100, null=True, blank=True)
     available_leave_days = models.IntegerField(default=15)
     evaluation = models.FloatField(null=True, blank=True)
+    pre_evaluation = models.FloatField(default=0.0, null=True, blank=True)
 
     def __str__(self):
         return str(self.user_id)
@@ -51,8 +52,10 @@ class UserVacation(models.Model):
         get_user_model(), on_delete=models.CASCADE, null=False, blank=False
     )
     applied_date = models.DateField()
-    start_date = models.DateTimeField()
-    end_date = models.DateTimeField()
+    start_date = models.DateField()
+    end_date = models.DateField()
+    start_time = models.TimeField(default="12:00")
+    end_time = models.TimeField(default="12:00")
     description = models.TextField()
     status = models.BooleanField(default=False)
     vacation_type = models.CharField(max_length=40)
