@@ -4,11 +4,11 @@
 
 {% block content %}
 {% if user.is_authenticated %}
-  Hello {{ user.username }}! &#129321;
+  Hello {{ user.username }}! 
   <p><a href="{% url 'logout' %}">Sign Out</a></p>
 {% else %}
-  <p>New to this site?  <a href="{% url 'signup' %}">Sign Up</a></p>
-  <p>Already have an account? <a href="{% url 'login' %}">Sign In</a></p>
+  <p>New Employee ?  <a href="{% url 'signup' %}">Sign Up</a></p>
+  <p>Already an Employee? <a href="{% url 'login' %}">Sign In</a></p>
  
 {% endif %}
 {% endblock %}
