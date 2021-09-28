@@ -35,7 +35,15 @@ class RolePermissionSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+class DepartmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Department
+        fields = "__all__"
+
+
 class UserInfoSerializer(serializers.ModelSerializer):
+    dep_id = DepartmentSerializer()
+
     class Meta:
         model = UserInfo
         fields = "__all__"
@@ -55,22 +63,13 @@ class AttendanceSerializer(serializers.ModelSerializer):
 
 class PermissionSerializer(serializers.ModelSerializer):
     class Meta:
-        model = RolePermission
-        fields = ("role_id", "per_id")
+        model = Permission
+        fields = "__all__"
 
 
 class UserRoleSerializer(serializers.ModelSerializer):
-    # roles = PermissionSerializer()
+    role = PermissionSerializer(many=True)
 
     class Meta:
         model = UserRole
-        fields = (
-            "role_name",
-            "id",
-        )
-
-
-class DepartmentSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Department
         fields = "__all__"
