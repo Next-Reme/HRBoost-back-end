@@ -43,6 +43,12 @@ class UserVacationList(ListCreateAPIView):
     # permission_classes = (IsOwnerOrReadOnly,)
 
 
+class UserVacationDetail(RetrieveUpdateDestroyAPIView):
+    queryset = UserVacation.objects.all()
+    serializer_class = UserVacationSerializer
+    # permission_classes = (IsOwnerOrReadOnly,)
+
+
 class AttendanceList(ListCreateAPIView):
     queryset = Attendance.objects.all()
     serializer_class = AttendanceSerializer
