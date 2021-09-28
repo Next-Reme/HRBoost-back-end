@@ -61,7 +61,7 @@ INSTALLED_APPS = [
     "corsheaders",
     # local
     "HRBoost",
-    "accounts",
+    'users'
 ]
 
 MIDDLEWARE = [
