@@ -1,16 +1,12 @@
 [tool.poetry]
-name = "final-project-back-end"
+name = "hrboost-back-end"
 version = "0.1.0"
 description = ""
-authors = ["hayabalasmeh <hmbalasmeh@yahoo.com>"]
+authors = ["Omardyab <omarzadyab@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
 Django = "^3.2.7"
-djangorestframework = "^3.12.4"
-djangorestframework-simplejwt = "^4.8.0"
-django-cors-headers = "^3.8.0"
-psycopg2-binary = "^2.9.1"
 
 [tool.poetry.dev-dependencies]
 black = "^21.9b0"
