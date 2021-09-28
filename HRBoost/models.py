@@ -4,14 +4,6 @@ from django.contrib.auth import get_user_model
 # Create your models here.
 
 
-class UserRole(models.Model):
-
-    role_name = models.CharField(max_length=15)
-
-    def __str__(self):
-        return self.role_name
-
-
 class Department(models.Model):
     manger_id = models.ForeignKey(
         get_user_model(), on_delete=models.CASCADE, null=False, blank=False
@@ -20,6 +12,41 @@ class Department(models.Model):
 
     def __str__(self):
         return self.dep_Name
+
+
+class Permission(models.Model):
+    # role = models.ManyToManyField(UserRole, through="RolePermission")
+    field = models.CharField(max_length=40)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.field
+
+
+class UserRole(models.Model):
+
+    role_name = models.CharField(max_length=15)
+    role = models.ManyToManyField(Permission, through="RolePermission")
+
+    def __str__(self):
+        return self.role_name
+
+
+class RolePermission(models.Model):
+
+    role_id = models.ForeignKey(
+        UserRole,
+        on_delete=models.CASCADE,
+        null=False,
+        blank=False,
+    )
+    per_id = models.ForeignKey(
+        Permission, on_delete=models.CASCADE, null=False, blank=False
+    )
+    has = models.BooleanField()
+
+    def __str__(self):
+        return str(self.per_id)
 
 
 class UserInfo(models.Model):
@@ -94,26 +121,3 @@ class Notification(models.Model):
 
 #     def __str__(self):
 #         return self.role_name
-
-
-class Permission(models.Model):
-
-    field = models.CharField(max_length=40)
-    description = models.TextField()
-
-    def __str__(self):
-        return self.field
-
-
-class RolePermission(models.Model):
-
-    role_id = models.ForeignKey(
-        UserRole, on_delete=models.CASCADE, null=False, blank=False
-    )
-    per_id = models.ForeignKey(
-        Permission, on_delete=models.CASCADE, null=False, blank=False
-    )
-    has = models.BooleanField()
-
-    def __str__(self):
-        return str(self.per_id)

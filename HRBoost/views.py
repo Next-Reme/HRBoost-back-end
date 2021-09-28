@@ -69,6 +69,15 @@ class RolePermissionList(ListCreateAPIView):
         return RolePermission.objects.filter(role_id=role_id)
 
 
+class UserRoleper(ListCreateAPIView):
+    serializer_class = UserRoleSerializer
+    queryset = UserRole.objects.all()
+
+    # def get_queryset(self):
+    #     # role_id = self.kwargs["role_id"]
+    #     return RolePermission.objects.all()
+
+
 # class AdminRolePermissionList(ListCreateAPIView):
 
 #     queryset = RolePermission.objects.filter(role_id="1")
