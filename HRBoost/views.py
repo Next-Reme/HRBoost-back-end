@@ -20,7 +20,8 @@ from .serializers import (
     GetPermissions,
     DepartmentSerializer,
 )
-from .permissions import IsOwnerOrReadOnly
+
+# from .permissions import IsOwnerOrReadOnly
 
 # from django.contrib.auth.decorators import api
 
@@ -33,19 +34,19 @@ class UserInfoList(ListCreateAPIView):
 class UserInfoDetail(RetrieveUpdateDestroyAPIView):
     queryset = UserInfo.objects.all()
     serializer_class = UserInfoSerializer
-    permission_classes = (IsOwnerOrReadOnly,)
+    # permission_classes = (IsOwnerOrReadOnly,)
 
 
 class UserVacationList(ListCreateAPIView):
     queryset = UserVacation.objects.all()
     serializer_class = UserVacationSerializer
-    permission_classes = (IsOwnerOrReadOnly,)
+    # permission_classes = (IsOwnerOrReadOnly,)
 
 
 class AttendanceList(ListCreateAPIView):
     queryset = Attendance.objects.all()
     serializer_class = AttendanceSerializer
-    permission_classes = (IsOwnerOrReadOnly,)
+    # permission_classes = IsOwnerOrReadOnly
 
 
 class AttendanceDetail(ListCreateAPIView):
@@ -72,14 +73,14 @@ class RolePermissionList(ListCreateAPIView):
 
 #     queryset = RolePermission.objects.filter(role_id="1")
 #     serializer_class = RolePermissionSerializer
-#     permission_classes = (IsOwnerOrReadOnly,)
+# permission_classes = (IsOwnerOrReadOnly,)
 
 
 # class UserRolePermissionList(ListCreateAPIView):
 
 #     queryset = RolePermission.objects.filter(role_id="2")
 #     serializer_class = RolePermissionSerializer
-#     permission_classes = (IsOwnerOrReadOnly,)
+# permission_classes = (IsOwnerOrReadOnly,)
 
 
 # class RolePermissionList(ListCreateAPIView):
@@ -88,4 +89,4 @@ class RolePermissionList(ListCreateAPIView):
 #         "select * from UserInfo LEFT JOIN HRBoost_userrole ON HRBoost_userinfo.role_id_id = userrole.id LEFT JOIN rolepermission ON userrole.id = rolepermission.role_id_id"
 #     )
 #     serializer_class = RolePermissionSerializer
-#     permission_classes = (IsOwnerOrReadOnly,)
+# permission_classes = (IsOwnerOrReadOnly,)
