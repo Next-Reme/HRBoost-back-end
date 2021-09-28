@@ -6,6 +6,7 @@ from .views import (
     AttendanceDetail,
     UserInfoList,
     RolePermissionList,
+    UserRoleper,
 )
 
 urlpatterns = [
@@ -22,5 +23,9 @@ urlpatterns = [
         "rolepermission/<int:role_id>/",
         RolePermissionList.as_view(),
         name="role_permission_list",
+    ),
+    path(
+        "userroleper/",
+        UserRoleper.as_view(),
     ),
 ]
