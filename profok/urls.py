@@ -18,6 +18,7 @@ from django.urls import path, include
 from rest_framework_simplejwt import views as jwt_views
 
 urlpatterns = [
+    path('', include('login.urls')),
     path("admin/", admin.site.urls),
     path("api/hrboost/", include("HRBoost.urls")),
     path("api-auth/", include("rest_framework.urls")),
