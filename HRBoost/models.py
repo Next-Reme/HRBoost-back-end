@@ -98,7 +98,7 @@ class Attendance(models.Model):
         get_user_model(), on_delete=models.CASCADE, null=False, blank=False
     )
     check_in = models.DateTimeField()
-    check_out = models.DateTimeField()
+    check_out = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         return str(self.user_id)
