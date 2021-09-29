@@ -64,8 +64,8 @@ INSTALLED_APPS = [
     # local
     # "accounts",
     "HRBoost",
-    # 'knox', 
-    'login',
+    # 'knox',
+    "login",
 ]
 
 MIDDLEWARE = [
@@ -162,7 +162,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
-# AUTH_USER_MODEL = "login.CustomUser"
+AUTH_USER_MODEL = "login.User"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
