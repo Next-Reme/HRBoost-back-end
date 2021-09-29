@@ -83,6 +83,8 @@ class UserVacation(models.Model):
     end_date = models.DateField()
     start_time = models.TimeField(default="12:00")
     end_time = models.TimeField(default="12:00")
+    num_hours = models.IntegerField(default=0, null=False, blank=False)
+    num_days = models.IntegerField(default=0, blank=False)
     description = models.TextField()
     status = models.BooleanField(default=False)
     vacation_type = models.CharField(max_length=40)
