@@ -62,8 +62,10 @@ INSTALLED_APPS = [
     "rest_framework",
     "corsheaders",
     # local
-    "accounts",
+    # "accounts",
     "HRBoost",
+    # 'knox',
+    "login",
 ]
 
 MIDDLEWARE = [
@@ -160,7 +162,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
-AUTH_USER_MODEL = "accounts.CustomUser"
+AUTH_USER_MODEL = "login.User"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
@@ -172,6 +174,7 @@ REST_FRAMEWORK = {
         "rest_framework_simplejwt.authentication.JWTAuthentication",
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.BasicAuthentication",
+        # 'knox.auth.TokenAuthentication',
     ],
 }
 
