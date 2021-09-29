@@ -9,6 +9,7 @@ from .models import (
     RolePermission,
     UserInfo,
     UserVacation,
+    Blog,
 )
 from .serializers import (
     UserInfoSerializer,
@@ -19,7 +20,11 @@ from .serializers import (
     UserRoleSerializer,
     GetPermissions,
     DepartmentSerializer,
+
+    BlogSerializer,
+
     UserInfoupdateSerializer,
+
 )
 
 # from .permissions import IsOwnerOrReadOnly
@@ -117,6 +122,11 @@ class UserRoleper(ListCreateAPIView):
     # def get_queryset(self):
     #     # role_id = self.kwargs["role_id"]
     #     return RolePermission.objects.all()
+
+
+class Blog(ListCreateAPIView):
+    serializer_class = BlogSerializer
+    queryset = Blog.objects.all()
 
 
 # class AdminRolePermissionList(ListCreateAPIView):

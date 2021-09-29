@@ -7,12 +7,16 @@ from .views import (
     UserInfoList,
     RolePermissionList,
     UserRoleper,
+
+    Blog,
+
     UserVacationDetail,
     UserInfoUpdate,
     LastAttendanceDetail,
     AttendanceUpdateDetail,
     UserInfoDetailUserID,
     UserVacationDetailUserID,
+
 )
 
 urlpatterns = [
@@ -51,5 +55,9 @@ urlpatterns = [
     path(
         "userroleper/",
         UserRoleper.as_view(),
+    ),
+    path(
+        "blogs/",
+        Blog.as_view(),
     ),
 ]
