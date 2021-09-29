@@ -38,6 +38,17 @@ class UserInfoDetail(RetrieveUpdateDestroyAPIView):
     # permission_classes = (IsOwnerOrReadOnly,)
 
 
+class UserInfoDetailUserID(ListCreateAPIView):
+
+    serializer_class = UserInfoupdateSerializer
+
+    def get_queryset(self):
+        user_id = self.kwargs["user_id"]
+        return UserInfo.objects.filter(user_id=user_id)
+
+    # permission_classes = (IsOwnerOrReadOnly,)
+
+
 class UserInfoUpdate(RetrieveUpdateDestroyAPIView):
     queryset = UserInfo.objects.all()
     serializer_class = UserInfoupdateSerializer
@@ -55,6 +66,14 @@ class UserVacationDetail(RetrieveUpdateDestroyAPIView):
     # permission_classes = (IsOwnerOrReadOnly,)
 
 
+class UserVacationDetailUserID(ListCreateAPIView):
+    serializer_class = UserVacationSerializer
+
+    def get_queryset(self):
+        user_id = self.kwargs["user_id"]
+        return UserVacation.objects.filter(user_id=user_id)
+
+
 class AttendanceList(ListCreateAPIView):
     queryset = Attendance.objects.all()
     serializer_class = AttendanceSerializer
@@ -68,9 +87,19 @@ class AttendanceDetail(ListCreateAPIView):
         username = self.kwargs["user_id"]
         return Attendance.objects.filter(user_id=username)
 
-    # username = kwargs["username"]
-    # queryset = Attendance.objects.all()
-    # permission_classes = (IsOwnerOrReadOnly,)
+
+class AttendanceUpdateDetail(RetrieveUpdateDestroyAPIView):
+    queryset = Attendance.objects.all()
+    serializer_class = AttendanceSerializer
+
+
+class LastAttendanceDetail(ListCreateAPIView):
+    serializer_class = AttendanceSerializer
+
+    def get_queryset(self):
+        user_id = self.kwargs["user_id"]
+        last = Attendance.objects.filter(user_id=user_id).order_by("-id")
+        return last
 
 
 class RolePermissionList(ListCreateAPIView):
