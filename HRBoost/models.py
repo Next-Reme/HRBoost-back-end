@@ -63,7 +63,7 @@ class UserInfo(models.Model):
     image = models.TextField(default="user.jpg", blank=True)
     address = models.TextField(null=True, blank=True)
     phone_num = models.CharField(max_length=14, null=True, blank=True)
-    gender = models.BooleanField(null=True, blank=True)
+    gender = models.CharField(max_length=25, null=True, blank=True)
     social_status = models.CharField(max_length=60, null=True, blank=True)
     job_title = models.CharField(max_length=100, null=True, blank=True)
     available_leave_days = models.IntegerField(default=15)
@@ -115,6 +115,17 @@ class Notification(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Blog(models.Model):
+    user_id = models.ForeignKey(
+        get_user_model(), on_delete=models.CASCADE, null=False, blank=False
+    )
+    content = models.TextField()
+    role = models.TextField()
+
+    def __str__(self):
+        return self.role
 
 
 # class Role(models.Model):

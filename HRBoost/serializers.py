@@ -9,6 +9,7 @@ from .models import (
     RolePermission,
     UserInfo,
     UserVacation,
+    Blog,
 )
 
 
@@ -72,4 +73,10 @@ class UserRoleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserRole
+        fields = "__all__"
+
+
+class BlogSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Blog
         fields = "__all__"
