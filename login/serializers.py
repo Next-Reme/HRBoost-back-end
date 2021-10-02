@@ -21,7 +21,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 #         return user
 class UserSerializer(serializers.ModelSerializer):
-    password = serializers.CharField(min_length=8, write_only=True)
+    password = serializers.CharField(write_only=True)
 
     class Meta:
         model = User
